@@ -1,12 +1,30 @@
 // Global
-let canvas = document.querySelector('#c');
+const canvas = document.querySelector('#c');
 let WIDTH = canvas.width = window.innerWidth;
-let HEIGHT = canvas.height = 600;
-let ctx = canvas.getContext('2d');
+let HEIGHT = canvas.height = window.innerHeight;
+const ctx = canvas.getContext('2d');
+
+
+window.onresize = function() {
+  const canvas = document.querySelector('#c');
+  let WIDTH = canvas.width = window.innerWidth;
+  let HEIGHT = canvas.height = window.innerHeight;
+  const ctx = canvas.getContext('2d');
+};
 
 
 let MAX_CREATURES = 300;
-const REPRODUCTION_RATE = 0.5;
+let REPRODUCTION_RATE = 0.5;
+let maxCreaturesInput = document.getElementById('max-creatures');
+maxCreaturesInput.addEventListener('input', () => {
+  MAX_CREATURES = parseInt(maxCreaturesInput.value);
+});
+
+let mateRateInput = document.getElementById('mate-rate');
+mateRateInput.addEventListener('input', () => {
+  REPRODUCTION_RATE = parseInt(mateRateInput.value);
+});
+
 const ENABLE_SUPER_DEBUG = false;
 
 // constants for flexibilty
@@ -106,7 +124,7 @@ function load() {
         PREDATOR: [-4, 75],
         EATER: [-2, 100]
       },
-      cloneItSelf: 0.0015,
+      cloneItSelf: 0.0001,
       callback: function () {
         if (ecoSys.groups.CREATURE.length < MAX_CREATURES
           && random(1) < REPRODUCTION_RATE) {
@@ -219,12 +237,9 @@ function load() {
   // Stats
   window.setInterval(function () {
     renderStats({
-      'Good Creatures': ecoSys.groups.CREATURE.length,
-      'Predators': ecoSys.groups.PREDATOR.length,
-      'Avoiders': ecoSys.groups.AVOIDER.length,
-      'Eaters': ecoSys.groups.EATER.length,
-      'Foods': ecoSys.entities.FOOD.length,
-      'Poison': ecoSys.entities.POISON.length,
+      'Entities': ecoSys.groups.CREATURE.length + ecoSys.groups.PREDATOR.length + ecoSys.groups.AVOIDER.length + ecoSys.groups.EATER.length + ecoSys.entities.FOOD.length + ecoSys.entities.POISON.length,
+      'Boids': ecoSys.groups.CREATURE.length + ecoSys.groups.PREDATOR.length + ecoSys.groups.AVOIDER.length + ecoSys.groups.EATER.length,
+      'Foods': ecoSys.entities.FOOD.length + ecoSys.entities.POISON.length,
       'FPS': fps + ' |',
     })
   });
