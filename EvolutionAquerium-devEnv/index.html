@@ -20,7 +20,7 @@
         <label><input type="checkbox" id="names"><span class="label-text">Show Names</span></label>
         <label><input type="checkbox" id="render_health"><span class="label-text">Display Health</span></label>
         <label>Max Creatures: <input type="number" id="max-creatures" min="0" max="10000" step="100" value="300"></label>
-        <label>Breed Speed: <input type="number" id="mate-rate" min="0" max="5" step="0.5" value="0.5"></label>
+        <label>Breed Speed: <input type="number" id="mate-rate" min="0" max="5" step="0.1" value="0.5"></label>
         <label>Separation + or - <input type="number" id="separate" min="-5.0" max="5.0" value="0"></label>
         <label>Alignment + or - <input type="number" id="align" min="-5.0" max="5.0" value="0"></label>
         <label>Cohesion + or - <input type="number" id="cohesion" min="-5.0" max="5.0" value="0"></label>
@@ -29,6 +29,7 @@
           <option value="PREDATOR">Click Spawn: 1 Predator</option>
           <option value="AVOIDER">Click Spawn: 1 Avoider</option>
           <option value="EATER">Click Spawn: 1 Eater</option>
+          <option value="ALPHA_CREATURE">Click Spawn: 1 *ALPHA*</option>
         </select>
       </div>
       <script src="./src/lib/Vector.js"></script>

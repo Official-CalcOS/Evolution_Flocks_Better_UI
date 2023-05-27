@@ -67,8 +67,8 @@ class AgentBuilder {
  * @class Agent
  * @extends BaseAgent
  */
-let Agent = new AgentBuilder('CREATURE');
-
+let Agent = new AgentBuilder('CREATURE')
+  .setDNA([1, 1, 200, 200])
 
 /**
  * @class Predator
@@ -123,3 +123,17 @@ let Mother = new AgentBuilder('MOTHER')
   .setHealthDecrease(0.000001)
   .setColor([255, 255, 255])
   .setFoodMultiplier([0.5, 0])
+
+/**
+* @class AlphaCreature 
+* @extends BaseAgent
+*/
+let AlphaCreature = new AgentBuilder('ALPHA_CREATURE')
+.setDNA([1, 1, 200, 200])
+.setRadius(10)
+.setMaxRadius(50)
+.setMaxSpeed(6)
+.setMaxForce(0.05)
+.setHealthDecrease(0.0000001)
+.setColor([100, 100, 255])
+.setFoodMultiplier([0.5, 0])
